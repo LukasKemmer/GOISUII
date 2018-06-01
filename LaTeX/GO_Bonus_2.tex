@@ -11,7 +11,7 @@
 \usepackage{placeins}
 \usepackage{eurosym}
 \usepackage{amssymb,amsmath}
-
+\usepackage{mathtools}
 \usepackage{graphicx} 
 \usepackage{color}
 \definecolor{kit}{cmyk}{1,0,0.6,0}
@@ -141,50 +141,67 @@ Damit ist die eindeutige Lösung des linearen Gleichungssystems aus (a) genau de
 %q.e.d.
 \par
 \textbf{Aufgabe S2.2} \\
-(a) R:=L, \textcolor{red}{b:=Y}, A:=I.
+(a) Das lineare Gleichungssystem aus S2.1 (a) kann gelöst werden mit $R \coloneqq L, \ b \coloneqq y, \ A \coloneqq I$ mit
+%R:=L, \textcolor{red}{b:=Y}, A:=I.
 \begin{equation*}
 	L = \begin{pmatrix}
 	1 &-1 & 0 \cdots &0 &0\\
 	0 & 1 & -1 \cdots &0 &0\\
 	\vdots & \vdots & \vdots & \vdots & \vdots \\
 	0 & 0 & \cdots & 1 & -1\\ 
-	\end{pmatrix} \in \mathbb R^{(n-1)\times n}
+	\end{pmatrix} \in \mathbb R^{(n-1)\times n}.
 \end{equation*}
-Rest s. Python.
-
+Für den Rest siehe Python.
 \par
-(b) \textcolor{red}{Why not? Deutlich smoother?!. Ergibt Sinn, so Funktion smooth ist. Etc.; Ausgelassen da unklar}
-
+(b) %\textcolor{red}{Why not? Deutlich smoother?!. Ergibt Sinn, so Funktion smooth ist. Etc.; Ausgelassen da unklar}
+Mithilfe von $RL_2$ erhalten wir Approximationen der Werte $f(t_k)$ die augenscheinlich einer glatten Funktion entstammen. Bei Betrachtung der zugrunde liegenden Daten können jedoch drei potentielle Sprungstellen identifiziert werden, bei denen die Sprünge deutlich stärker ausfallen als das sonst vorliegende Noise. Es ist daher fraglich, ob es sich bei dem Ergebniss von $RL_2$ um eine gute Approximation handelt. Darüber hinaus sollte beachtet werden, dass das Ergebnis von $RL_2$ maßgeblich von der Wahl des Parameters $\alpha$ abhängt. Da jedoch nicht klar ist, welches $\alpha$ zu den besten Approximationen von $f8t_k)$ führt muss das Ergebniss von $RL_2$ auch hier mit Vorsicht genossen werden.
 \par
-(c) Es gilt:\\[10pt]
-\begin{equation*}	
-CRL_1: \min_{x\in\mathbb R^n,z}\|x-y\|_2^2+\alpha\|z\|_1\quad \text{s.t. $z=Lx \Leftrightarrow z-Lx=0$  \textcolor{red}{weiter konnte ich nicht lesen :D}}
-\end{equation*}
-
+(c) Es gilt
 \begin{equation*}
-\Rightarrow L(x,z,\mu)=\|x-y\|_2^2+\alpha \|z\|_1+\mu^T(z-Lx)
+	\begin{split}
+	CRL_1: \min_{x\in\mathbb R^n,z}\|x-y\|_2^2+\alpha\|z\|_1 \quad s.t. \quad Lx = z \Leftrightarrow Lx - z=0
+	\end{split}
 \end{equation*}
-
+Für die Lagrange-funktion folgt damit
+\begin{equation}
+\label{eq:lagrange}
+L(x,z,\mu)=\|x-y\|_2^2+\alpha \|z\|_1+\mu^T(Lx - z).
+\end{equation}
+Mithilfe von \refeq{eq:lagrange} ergibt sich das Lagrange-Dualproblem
 \begin{equation*}
-LD: \max_{\mu} \inf_{x,z} \|x-y\|_2^2+\alpha\|z\|_1+\mu^Tz-\mu^TLx  
+	\begin{split}
+	LD: &\max_{\mu} \inf_{x,z} \|x-y\|_2^2+\alpha\|z\|_1 - \mu^Tz + \mu^TLx \\
+			&\max_{\mu} \left( \inf_{x} \left( \underbrace{\|x-y\|_2^2 + \mu^TLx}_{\eqqcolon g(x)}  \right) + \inf_{z} \left( 
+			\underbrace{\alpha\|z\|_1 - \mu^Tz}_{\eqqcolon h(x)}  \right) \right).
+	\end{split}
 \end{equation*}
-
+Dabei sei angemerkt, dass die Separierbarkeit des infimums analog zu Übung 1.3.2 aus dem Buch erfolgt. Wir betrachten nun zunächst die beiden Funktionen .
+%\begin{equation*}
+%  \Rightarrow \underbrace{\inf_{x,z} (\|x-y\|_2^2-\mu^TLx)}_{a} + \underbrace{\inf_z(\mu^Tz+\alpha\|z\|_1)}_{b}
+%\end{equation*}
+Für $g(x)$ gilt
 \begin{equation*}
-  \Rightarrow \underbrace{\inf_{x,z} (\|x-y\|_2^2-\mu^TLx)}_{a} + \underbrace{\inf_z(\mu^Tz+\alpha\|z\|_1)}_{b}
+	\begin{split}
+		\nabla g(x) &= 2(x-y) + L^T\mu. \\
+		D^2 g(x) &= 2 I \succ 0.
+	\end{split}
 \end{equation*}
-
-Für $a$ gilt:
+Damit folgt nach Satz 2.5.10, dass $g(x)$ gleichmäßig konvex ist (beachte, dass alle Eigenwerte der Hessematrix $2$ und damit echt größer $0$ sind, da bei einer Diagonalmatrix die Eigenwerte den Diagonaleinträgen der Matrix entsprechen). Mithilfe von Satz 2.4.5 folgt, dass mithilfe der kritischen Punkte die Globalen Minimalpunkte und damit das Infimum von $g(x)$ gefunden werden können. Es folgt
 \begin{equation*}
-  a: 2(x-y)-L^T\mu\stackrel{!}{=} 0 \Leftrightarrow x=y+0,5L^T\mu
+	\begin{split}
+	  2( \bar{x}-y)+L^T\mu &\stackrel{!}{=}0 \\
+	  \Leftrightarrow \bar{x}&=y+\frac{1}{2} L^T\mu.
+	\end{split}
 \end{equation*}
+Damit folgt 
 \begin{equation*}
-  \Rightarrow \textcolor{red}{\inf_x(...)}=\frac{1}{4}\mu^TLL^T\mu-\mu^TLy-\frac{1}{2}\mu^TLL^T\mu=-\frac{1}{4}\mu^TLL^T\mu-\mu^TLy
+	\begin{split}
+		\inf_x g(x) = g( \bar{x} ) &=\frac{1}{4}\mu^TLL^T\mu+\mu^TLy-\frac{1}{2}\mu^TLL^T\mu \\ &=-\frac{1}{4}\mu^TLL^T\mu+\mu^TLy.
+	\end{split}
 \end{equation*}
-
-
-Für $b$ gilt:
+Für $h(x)$ gilt:
 \begin{equation*}
-  \Rightarrow \inf_x (\mu^Tz+\alpha\|z\|_1)=\inf_z \sum_{i=1}^{n-1}(\mu_iz_i+\alpha|z_i|)
+  \inf_x h(x)=\inf_z \sum_{i=1}^{n-1}(\mu_iz_i+\alpha|z_i|)
 \end{equation*}
 \begin{equation*}
   = \sum_{i=1}^{n-1} \inf_{z_i} (\mu_iz_i+\alpha|z_i|)
