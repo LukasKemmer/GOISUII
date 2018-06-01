@@ -76,40 +76,71 @@ Sommersemester 2018
 	\end{tabularx}
 \end{table}
 \textbf{Aufgabe S2.1} \\
-
 (a) Das lineare Gleichungssystem
 \begin{equation}
-  (A^TA+\alpha R^TR)x=A^Tb \Leftrightarrow x=(A^TA+\alpha R^TR)^{-1}A^Tb
+  (A^TA+\alpha R^TR)x=A^Tb
 \end{equation}
-
-besitzt genau dann eine eindeutige Lösung, so $A^TA+\alpha R^TR$ invertierbar ist. \newline
-Gemäß $A6$ besitzt $A^TA+\alpha R^TR$ vollen Rang, so $Kern(A^TA+\alpha R^TR=\{0\}$
-
+besitzt genau dann eine eindeutige Lösung, wenn $A^TA+\alpha R^TR$ invertierbar ist. Weiterhin gilt
+\begin{equation*}
+	\begin{split}
+		Kern(A^TA + \alpha R^T R) &= \{x \in \mathbb{R}^n \ | \ A^TAx + \alpha R^TRx = 0 \} \\
+	&=\{x \in \mathbb{R}^n \ | \ x^TA^TAx + \alpha x^TR^TRx = 0 \} \\
+	\end{split}
+\end{equation*}
+mit $x^TA^TAx = \| Ax \| _2^2 \geq 0$ und $\alpha x^TR^TRx = \alpha \| Rx \| \geq 0$ (wegen $\alpha >0$). Damit folgt, dass 
+\begin{equation}
+	x^TA^TAx + \alpha x^TR^TRx = 0
+\end{equation}
+nur dann erfüllt ist, wenn beide Summanden $0$ sind, d.h. wir suchen ein $x$ für das sowohl $x^TA^TAx=0$ als auch $x^TR^TRx=0$ gilt (wegen $\alpha>0$ muss $\alpha$ hier nicht berücksichtigt werden). Aus
+\begin{equation*}
+	\begin{split}
+		Kern(A) \cap Kern(B) &= \{x \in \mathbb{R}^n \ | \ Ax=0 \} \cap \{x \in \mathbb{R}^n \ | \ Rx=0 \} \\
+		&=\{x \in \mathbb{R}^n \ | \ x^TA^TAx=0 \land x^TR^TRX=0 \} \\
+		&=\{0\}
+	\end{split}
+\end{equation*}
+folgt, dass diese Vorderung nur für $x=0$ erfüllt ist. Damit gilt $Kern(A^TA + \alpha R^TR) = \{0\}$ und damit nach Satz 5 der mathematischen Grundlagen, dass $A^TA + \alpha R^TR$ invertierbar ist. Die eindeutige Lösung des linearen Gleichungssystems ist dann
+\begin{equation*}
+	\begin{split}
+	(A^TA+\alpha R^TR)x &=A^Tb \\
+	\Leftrightarrow x&= (A^TA+\alpha R^TR)^{-1} A^Tb	
+	\end{split}
+\end{equation*}
+% und es folgt
+%\begin{equation}
+%	x = (A^TA+\alpha R^TR)^-1 A^Tb.
+%\end{equation}
+%Gemäß $A6$ besitzt $A^TA+\alpha R^TR$ vollen Rang, so $Kern(A^TA+\alpha R^TR=\{0\}$
 %Kern(A)\cap Kern(R)=\{0\} \Rightarrow \{x\in \mathbb R^n|Ax=0\}\cap\{x\in\mathbb R^n|Rx=0\}
-
-Es gilt: $Kern(A^TA+\alpha R^TRx)$\\[10pt]
-=$\{x\in\mathbb R^n|(A^TA+\alpha R^TR)x=0\}$\\[10pt]
-=$\{x\in \mathbb R^n|\underbrace{A^TA}_{n\times n,\succeq 0}x\}+\alpha\underbrace{R^TR}_{n\times n,\succeq 0}x=0\}=\{0\}\quad$ \footnote{Positiv semidefinit da Gram-Matrix}\\[10pt]
-=$\{x\in \mathbb R^n|x^T\underbrace{A^TA}_{\geq 0}x\}+\alpha x^T\underbrace{R^TR}_{\geq 0}x=0\}=\{0\}$\\[10pt]
-da nur für $x=0:(Ax=0)\wedge (Rx=0)$.
-
-\textcolor{red}{Damit ist $A^TA+\alpha R^TR$ invertierbar}
-
+%Es gilt: $Kern(A^TA+\alpha R^TRx)$\\[10pt]
+%=$\{x\in\mathbb R^n|(A^TA+\alpha R^TR)x=0\}$\\[10pt]
+%=$\{x\in \mathbb R^n|\underbrace{A^TA}_{n\times n,\succeq 0}x\}+\alpha\underbrace{R^TR}_{n\times n,\succeq 0}x=0\}=\{0\}\quad$ \footnote{Positiv semidefinit da Gram-Matrix}\\[10pt]
+%=$\{x\in \mathbb R^n|x^T\underbrace{A^TA}_{\geq 0}x\}+\alpha x^T\underbrace{R^TR}_{\geq 0}x=0\}=\{0\}$\\[10pt]
+%da nur für $x=0:(Ax=0)\wedge (Rx=0)$.
+%\textcolor{red}{Damit ist $A^TA+\alpha R^TR$ invertierbar}
 \par
-(b) Es handelt sich bei dem Gleichungssystem aus (a) offensichtlich um ein konvexes Optimierungsproblem.
-Entsprechend sind alle kritischen Punkte auch Nullstellen.
-Es gilt:
-
-$\nabla_x f(x)=A^T(Ax-b)+\alpha R^TRx\stackrel{!}{=}0$\\[5pt]
-$\Leftrightarrow A^TAx-A^Tb+\alpha R^TRx=0$\\[5pt]
-$\Leftrightarrow (A^TA+\alpha R^TR)x=A^Tb$\\[5pt]
-q.e.d.
+(b) Sei $f: \mathbb{R}^n \rightarrow \mathbb{R}$ mit $f(x) = \|Ax-b \|_2^2 + \alpha \|Rx \|_2^2$. Wegen $D^2( \|x \|_2^2)=2I \succeq 0$, der Linearität von $Ax-b$ sowie $Rx$ und $\alpha > 0$ folgt mit Übung 4.6 und Satz 2.5.3 die Konvexität von $f$ als Summe konvexer Funktionen (merke, dass es sich um ein unrestringiertes Problem mit $M=\mathbb{R}^n$ handelt und der $\mathbb{R}^n$ eine konvexe Menge ist). Mit Satz 2.4.5 und Korollar 2.4.6 folgt, dass die kritischen Punkte von $f$ genau die globalen Minimalpunkte sind. Es gilt
+\begin{equation}
+	\nabla f(x) = 2A^T(Ax-b) + 2\alpha R^TRx
+\end{equation}
+und damit
+\begin{equation*}
+	\begin{split}
+		2A^T(Ax-b) + 2\alpha R^TRx &= 0 \\
+		\Leftrightarrow A^TAx-A^Tb+\alpha R^TRx &=0 \\
+		\Leftrightarrow (A^TA+\alpha R^TR)x &=A^Tb.
+	\end{split}
+\end{equation*}
+Damit ist die eindeutige Lösung des linearen Gleichungssystems aus (a) genau der eindeutige globale Minimalpunkt von $P$.
+%Es handelt sich bei dem Gleichungssystem aus (a) offensichtlich um ein konvexes Optimierungsproblem.
+%Entsprechend sind alle kritischen Punkte auch Nullstellen.
+%Es gilt:
+%$\nabla_x f(x)=A^T(Ax-b)+\alpha R^TRx\stackrel{!}{=}0$\\[5pt]
+%$\Leftrightarrow A^TAx-A^Tb+\alpha R^TRx=0$\\[5pt]
+%$\Leftrightarrow (A^TA+\alpha R^TR)x=A^Tb$\\[5pt]
+%q.e.d.
 \par
-
-
-
 \textbf{Aufgabe S2.2} \\
-
 (a) R:=L, \textcolor{red}{b:=Y}, A:=I.
 \begin{equation*}
 	L = \begin{pmatrix}
