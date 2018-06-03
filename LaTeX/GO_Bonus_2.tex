@@ -151,7 +151,7 @@ Damit ist die eindeutige Lösung des linearen Gleichungssystems aus (a) genau de
 	0 & 0 & \cdots & 1 & -1\\ 
 	\end{pmatrix} \in \mathbb R^{(n-1)\times n}.
 \end{equation*}
-Für den Rest siehe Python.
+Der Rest der Lösung ist in dem angehängten Python-Code dokumentiert.
 \par
 (b) %\textcolor{red}{Why not? Deutlich smoother?!. Ergibt Sinn, so Funktion smooth ist. Etc.; Ausgelassen da unklar}
 Mithilfe von $RL_2$ erhalten wir Approximationen der Werte $f(t_k)$ die augenscheinlich einer glatten Funktion entstammen. Bei Betrachtung der zugrunde liegenden Daten können jedoch drei potentielle Sprungstellen identifiziert werden, bei denen die Sprünge deutlich stärker ausfallen als das sonst vorliegende Noise. Es ist daher fraglich, ob es sich bei dem Ergebniss von $RL_2$ um eine gute Approximation handelt. Darüber hinaus sollte beachtet werden, dass das Ergebnis von $RL_2$ maßgeblich von der Wahl des Parameters $\alpha$ abhängt. Da jedoch nicht klar ist, welches $\alpha$ zu den besten Approximationen von $f8t_k)$ führt muss das Ergebniss von $RL_2$ auch hier mit Vorsicht genossen werden.
@@ -199,47 +199,67 @@ Damit folgt
 		\inf_x g(x) = g( \bar{x} ) &=\frac{1}{4}\mu^TLL^T\mu+\mu^TLy-\frac{1}{2}\mu^TLL^T\mu \\ &=-\frac{1}{4}\mu^TLL^T\mu+\mu^TLy.
 	\end{split}
 \end{equation*}
-Für $h(x)$ gilt:
+Für $h(x)$ gilt
 \begin{equation*}
-  \inf_x h(x)=\inf_z \sum_{i=1}^{n-1}(\mu_iz_i+\alpha|z_i|)
+	\begin{split}
+		\inf_x h(x)&=\inf_z \sum_{i=1}^{n-1}( -\mu_iz_i+\alpha|z_i|) \\
+		  &= \sum_{i=1}^{n-1} \inf_{z_i} (-\mu_iz_i+\alpha|z_i|) \\
+		  &= \sum_{i=1}^{n-1} \gamma (z_i)
+		  \end{split}
 \end{equation*}
+mit 
+%Sei\footnote{\textcolor{red}{Im Folgenden nicht alle Nebenrechnungen aufgeführt}} nun $\mu\leq\alpha$.
 \begin{equation*}
-  = \sum_{i=1}^{n-1} \inf_{z_i} (\mu_iz_i+\alpha|z_i|)
-\end{equation*}
-
-Sei\footnote{\textcolor{red}{Im Folgenden nicht alle Nebenrechnungen aufgeführt}} nun $\mu\leq\alpha$.
-
-\begin{equation*}
-\inf_{z_i} \mu_iz_i+\alpha|z_i|=\begin{cases}
-	0,& |\mu_i|\leq \alpha\\
-	-\infty,& |\mu_i|>\alpha\\
+\gamma(z_i) \coloneqq \begin{cases}
+	0,& |\mu_i|\leq \alpha,\\
+	-\infty,& |\mu_i|>\alpha.\\
 \end{cases}
 \end{equation*}
-aufgrund $z_i\geq0:\mu_iz_i+\alpha z_i=(\mu_i+\alpha)z_i$.
+%wegen $z_i\geq0:\mu_iz_i+\alpha z_i=(\mu_i+\alpha)z_i$.
+Insgesamt folgt 
 \begin{equation*}
-  \inf_z \mu^Tz+\underbrace{\alpha\|z\|_1}_{\geq0}=\begin{cases}
-  	-\infty,&\exists i:|\mu_i>\alpha\\
-  	0,&\|\mu\|_\infty\leq\alpha\\
-  \end{cases}
+	\begin{split}
+		\inf_z h(x) &=  \mu^Tz+\alpha\|z\|_1 \\
+		&=\begin{cases}
+		-\infty,&\exists i \in \{1,..., n\}:|\mu_i | >\alpha,\\
+		0,&\|\mu\|_\infty\leq\alpha.\\
+		\end{cases}
+	\end{split}
 \end{equation*}
-
+Da $\inf_z h(x)$ für $\| \mu \|_{\infty} > \alpha $ auf $-\infty$ und damit nicht mehr in die reelen Zahlen abbildet fügen wir $\| \mu \|_{\infty}$ als Nebenbedingung zu $LD$ hinzu. Es ergibt sich
+%\begin{equation*}
+ % \Rightarrow \max_\mu \|x-y\|_2^2+\alpha\|z\|_1+\mu^T(z-Lx)
+%\end{equation*}
 \begin{equation*}
-  \Rightarrow \max_\mu \|x-y\|_2^2+\alpha\|z\|_1+\mu^T(z-Lx)
+  LD:  \max_{\mu \in \mathbb{R}^{n-1}} -\frac{1}{4}\mu^TLL^T\mu + \mu^TLy,\quad \text{s.t. } \quad \|\mu\|_\infty\leq\alpha.
 \end{equation*}
-\begin{equation*}
-  \Leftrightarrow \max_\mu -\frac{1}{4}\mu^TLL^T\mu-\mu^TLy,\quad \text{s.t. } \|\mu\|_\infty\leq\alpha
-\end{equation*}
-
-\par
 (d) \par
 
 
 
 \textbf{Aufgabe S2.3} \\
 
-(a) \textcolor{red}{Ausgelassen da unklar, inwiefern bereits verwertbar}
-
-
+(a) Es gilt $\nabla h(x) = Ax + b$. Damit kann das LP geschrieben werden als
+\begin{equation*}
+	LP: \quad \min_{x \in \mathbb{R}^n} \hat{x}^T Ax + b^Tx - \hat{x}^TA \hat{x} - b^T \hat{x} \quad \text{s.t.} \quad \| x \|_{\infty} \leq \alpha.
+\end{equation*}
+Da Konstante Terme in der Zielfunktion keinen Einfluss auf die Wahl der optimalen Punkte haben (vgl. Buch, Übung 1.3.1) ist dies equivalent zu
+\begin{equation*}
+	LP': \quad \min_{x \in \mathbb{R}^n} \left( \hat{x}^T A + b^T \right) x\quad \text{s.t.} \quad \| x \|_{\infty} \leq \alpha
+\end{equation*}
+mit $\hat{x}^T A + b^T$ einem Vektor der DImension $1xn$. Wir setzen nun $c \coloneqq A \hat{x} + b \in \mathbb{R}^n$. Damit können wir $LP'$ schreiben als
+\begin{equation*}
+LP': \quad \min_{x \in \mathbb{R}^n} c^T x\quad \text{s.t.} \quad \| x \|_{\infty} \leq \alpha.
+\end{equation*}
+Es gilt für alle $x \in \mathbb{R}^n$
+\begin{equation*}
+	\begin{split}
+		c^Tx = \sum_{i=1}^{n} c_ix_i &\geq - \sum_{i=1}^{n} |c_i| |x_i| \\
+		&\geq -\sum_{i=1}^{n} |c_i| \alpha \\
+		&= -\alpha \sum_{i=1}^{n} c_i sgn(c_i) 
+	\end{split}
+\end{equation*}
+mit $sgn(x_i)$ dem Vorzeichen von $x:i$. Es sei angemerkt, dass die zweite Ungleichung aus der Nebenbedingung $\| x \|_{\infty} \geq \alpha$ sowie $\alpha > 0$ folgt. Insgesamt gilt, dass $x^*$ mit $x^*_i = - \alpha sgn(c_i)$ nach Definition 1.1.3 ein globaler Minimalpunkt von $LP'$ und damit auch von $LP$ ist.
 \par
 (b)  
 \par
