@@ -257,7 +257,7 @@ Da $\inf_z h(x)$ für $\| \mu \|_{\infty} > \alpha $ auf $-\infty$ und damit nic
 \end{equation*}
 
 \par
-(d) Es gilt 
+(d) Sei $\bar{\mu}$ ein globaler Minimalpunkt von $LP$. Es gilt 
 \begin{equation*}
 	\nabla_x L(x, z, \bar{\mu}) = 2(x-y)+ L^T\bar{\mu}
 \end{equation*}
@@ -268,7 +268,7 @@ und
 		\Leftrightarrow \bar{x} &= y - \frac{1}{2}L^T\bar{\mu}.
 	\end{split}
 \end{equation*}
-Damit folgt, dass der Punkt $(\bar{x}, \bar{\mu})$ nach Definition 2.7.5 der Maximalpunkt des Wolfe-Duals ist. Er ist wegen $\nabla _x L(\bar{x},z, \bar{\mu}) = 0$ und $\bar{\mu}$ gegeben aus der Aufgabenstellung insbesondere dual zulässig. Da der Punkt $\bar{x}$ weiterhin für $z \coloneqq L\bar{x}$ primal zulässig ist folgt mit 2.7.12 das $\bar{x}$ ein Optimalpunkt für $CRL_1$ und damit auch für $RL_1$ ist.
+Damit folgt, dass der Punkt $(\bar{x}, \bar{z}, \bar{\mu})$ mit passend gewähltem $\bar{z}$ nach Definition 2.7.5 der Maximalpunkt des Wolfe-Duals ist. Er ist wegen $\nabla _x L(\bar{x},\bar{z}, \bar{\mu}) = 0$, $\bar{\mu}$ gegeben aus der Aufgabenstellung und $\bar{z}$ passend gewählt insbesondere dual zulässig. Da der Punkt $\bar{x}$ weiterhin für passendes $\bar{z}$ primal zulässig ist folgt mit 2.7.12 das $\bar{x}$ ein Optimalpunkt für $CRL_1$ und damit auch für $RL_1$ ist.
 %Gemäß Aufgabenstellung gilt: $\bar x$ ist primal zulässig für $Lx=z$. Außerdem gilt aufgrund $\nabla_x L(x,z,\mu)=2x-2y+\mu L$, dass $(\bar\mu,\bar x)$ dual zulässig ist, so man zu beliebigem $\bar \mu\in \mathbb R^{n-1}$ den Punkt $\bar x=\frac{2y-\mu L}{2}$ wählt. Damit gleichzeitig Bedingung $a$ $\&$ $b$ aus Lemma 2.7.10. gelten, müssen $\bar x$ und  $\bar \mu$ also folgendes Gleichungssystem erfüllen:
 %\begin{equation*}
  % \begin{split}
