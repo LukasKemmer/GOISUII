@@ -154,7 +154,7 @@ Damit ist die eindeutige Lösung des linearen Gleichungssystems aus (a) genau de
 Der Rest der Lösung ist in dem angehängten Python-Code dokumentiert.
 \par
 (b) %\textcolor{red}{Why not? Deutlich smoother?!. Ergibt Sinn, so Funktion smooth ist. Etc.; Ausgelassen da unklar}
-Mithilfe von $RL_2$ erhalten wir Approximationen der Werte $f(t_k)$ die augenscheinlich einer glatten Funktion entstammen. Bei Betrachtung der zugrunde liegenden Daten können jedoch drei potentielle Sprungstellen identifiziert werden, bei denen die Sprünge deutlich stärker ausfallen als das sonst vorliegende Noise. Es ist daher fraglich, ob es sich bei dem Ergebniss von $RL_2$ um eine gute Approximation handelt. Darüber hinaus sollte beachtet werden, dass das Ergebnis von $RL_2$ maßgeblich von der Wahl des Parameters $\alpha$ abhängt. Da jedoch nicht klar ist, welches $\alpha$ zu den besten Approximationen von $f8t_k)$ führt muss das Ergebniss von $RL_2$ auch hier mit Vorsicht genossen werden.
+Mithilfe von $RL_2$ erhalten wir Approximationen der Werte $f(t_k)$ die augenscheinlich einer glatten Funktion entstammen. Bei Betrachtung der zugrunde liegenden Daten können jedoch drei potentielle Sprungstellen identifiziert werden, bei denen die Sprünge deutlich stärker ausfallen als das sonst vorliegende Noise. Es ist daher fraglich, ob es sich bei dem Ergebnis von $RL_2$ um eine gute Approximation handelt. Darüber hinaus sollte beachtet werden, dass das Ergebnis von $RL_2$ maßgeblich von der Wahl des Parameters $\alpha$ abhängt. Da jedoch nicht klar ist, welches $\alpha$ zu den besten Approximationen von $f(t_k)$ führt muss das Ergebnis von $RL_2$ auch hier mit Vorsicht genossen werden.
 \par
 (c) Es gilt
 \begin{equation*}
@@ -233,9 +233,29 @@ Da $\inf_z h(x)$ für $\| \mu \|_{\infty} > \alpha $ auf $-\infty$ und damit nic
 \begin{equation*}
   LD:  \max_{\mu \in \mathbb{R}^{n-1}} -\frac{1}{4}\mu^TLL^T\mu + \mu^TLy,\quad \text{s.t. } \quad \|\mu\|_\infty\leq\alpha.
 \end{equation*}
-(d) \par
 
+\par
+(d) 
+Gemäß Aufgabenstellung gilt: $\bar x$ ist primal zulässig für $Lx=z$. Außerdem gilt aufgrund $\nabla_x L(x,z,\mu)=2x-2y+\mu L$, dass $(\bar\mu,\bar x)$ dual zulässig ist, so man zu beliebigem $\bar \mu\in \mathbb R^{n-1}$ den Punkt $\bar x=\frac{2y-\mu L}{2}$ wählt. Damit gleichzeitig Bedingung $a$ $\&$ $b$ aus Lemma 2.7.10. gelten, müssen $\bar x$ und  $\bar \mu$ also folgendes Gleichungssystem erfüllen:
+\begin{equation*}
+  \begin{split}
+  	&\bar x=\frac{2y-\mu L}{2}\\
+  	&Lx=z\\
+  \end{split}
+\end{equation*}
 
+Die Lösung berechnet sich zu:
+\begin{equation*}
+  \begin{split}
+  	&\mu^*=\frac{2y-2\frac{z}{L}}{L}\\
+  	&x^*=\frac{4y-z\frac{z}{L}}{L}
+  \end{split}
+\end{equation*}
+
+Dabei sind $z,y$ und $L$ vorgegeben. Damit Bedingung $c$ von Lemma 2.7.10 gilt, muss folgende Gleichung erfüllt sein: $f(x^*)=L(x^*,\mu^*)$.
+\textcolor{red}{Da das zugrunde liegende Problem $RL_1$ keine Ungleichheiten aufweist, erfüllen $(x^*,\mu^*)$ gemäß Buch S. 74 automatisch auch Bedingung $c$. Damit ist $\bar x$ globaler Minimalpunkt von $RL_1$.}
+
+\par
 
 \textbf{Aufgabe S2.3} \\
 
