@@ -3,7 +3,7 @@
 %\usepackage[applemac]{inputenc} % Bei Benutzung von Apple-Betriebssystemen bitte durch ``\usepackage[applemac]{inputenc}'' ersetzen.
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
+\usepackage{subcaption}
 \usepackage[ngerman]{babel} 
 \usepackage{fixltx2e}
 \usepackage{tabularx}
@@ -153,7 +153,29 @@ Damit ist die eindeutige Lösung des linearen Gleichungssystems aus (a) genau de
 \end{equation*}
 Der Rest der Lösung ist in dem angehängten Python-Code dokumentiert.
 \par
-(b) %\textcolor{red}{Why not? Deutlich smoother?!. Ergibt Sinn, so Funktion smooth ist. Etc.; Ausgelassen da unklar}
+(b) Die Ergebnisse aus $RL_2$ sind in Abbildung \ref{fig:s22} dargestellt. 
+\begin{figure}[h]
+	\centering
+	\label{fig:s22}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=1\columnwidth]{Images/2a1.png}
+		\label{2a1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=1\columnwidth]{Images/2a5.png}
+		\label{2a5}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=1\columnwidth]{Images/2a10.png}
+		\label{2a10}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=1\columnwidth]{Images/2a50.png}
+		\label{2a50}
+	\end{subfigure}
+	\caption{Ergebnisse aus $RL_2$ mit $\alpha \in \{1, 5, 10, 50\}$.}
+	\vspace{-20pt}
+\end{figure}
 Mithilfe von $RL_2$ erhalten wir Approximationen der Werte $f(t_k)$ die augenscheinlich einer glatten Funktion entstammen. Bei Betrachtung der zugrunde liegenden Daten können jedoch drei potentielle Sprungstellen identifiziert werden, bei denen die Sprünge deutlich stärker ausfallen als das sonst vorliegende Noise. Es ist daher fraglich, ob es sich bei dem Ergebnis von $RL_2$ um eine gute Approximation handelt. Darüber hinaus sollte beachtet werden, dass das Ergebnis von $RL_2$ maßgeblich von der Wahl des Parameters $\alpha$ abhängt. Da jedoch nicht klar ist, welches $\alpha$ zu den besten Approximationen von $f(t_k)$ führt muss das Ergebnis von $RL_2$ auch hier mit Vorsicht genossen werden.
 \par
 (c) Es gilt
@@ -313,10 +335,31 @@ Insgesamt folgt für den eindeutigen globalen Minimalpunkt $t^*$ von $LQ$
 	\end{cases}
 \end{equation*}
 \par
-(c) 
+(c) Siehe Python Code.
 \par
-(d) 
+(d) Die Ergebnisse des Frank-Wolfe-Verfahrens aus Aufgabenteil c) für den globalen Maximalpunkt $\bar{\mu}$ des Problems $LD$ sind mithilfe des Python-Codes in $frank\_wolfe.py$ berechnet worden. Die korrespondierenden optimalen Punkte $\bar{x}$ von $RL_1$ sind für verschiedene $\alpha$ in Abbildung~\ref{a01} dargestellt.
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=1\columnwidth]{Images/3a01.png}
+		\label{3a01}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=1\columnwidth]{Images/3a05.png}
+		\label{3a05}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=1\columnwidth]{Images/3a1.png}
+		\label{3a1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=1\columnwidth]{Images/3a5.png}
+		\label{3a5}
+	\end{subfigure}
+	\caption{Ergebnisse des angepassten Frank-Wolfe-Verfahrens aus Aufgabenteil c) für $\bar{x}$ aus $RL_1$ mit $\alpha \in \{\frac{1}{10}, \frac{1}{2}, 1, 5\}$.}
+	\vspace{-20pt}
+\end{figure}
 \par
-(e)
+(e) Der Ansatz aus Teilaufgabe d) ist im vorliegenden Fall besser als der Ansatz aus Aufgabe S2.2 geeignet um das zufälliger Rauschen aus den Messwerten zu entfernen. Dies liegt daran, dass der Datensatz Sprünge aufweist die kaum über das natürliche rauschen zu erklären sind. Der Ansatz aus Teilaufgabe d) ist dabei besser geeignet als der Ansatz aus S2.2, da er die Sprungstellen in den Daten verbleiben lässt, wohingegen der Ansatz aus S2.2 zu einer quasi-glatten Funktion führt. Die Unterschiedlichen Ergebnisse sind ein resultat der verschiedenen Normen der Regularisierungs-Terme. Die quadrierte Euklidische Norm aus S2.2 bestraft große Sprünge besonders stark (quadratisch) und versucht daher sie tendenziell \glqq zu vermeiden\grqq, wohin gegen die 1-Norm aus Teilaufgabe d) nur die absolute Sprung-Höhe bestraft und die Sprünge daher tendenziell zunächst \glqq beibehällt\grqq ~(merke bei beiden Normen mit steigendem $\alpha$ die Ergebnisse gegen eine Gerade konvergieren). Dies entspricht auch den Ergebnisse aus Aufgabe S1.2d, bei der ebenfalls die Unterschiedlichen Auswirkungen von Ausreißern (hier analog zu den Sprungstellen) auf die 1-Norm und die quadrierte euklidische Norm gezeigt worden sind. Auch dort hat die quadrierte euklidische Norm deutlich stärker auf Aussreißer reagiert und die 1-Norm sich robuster verhalten. 
 \par
 \end{document}
