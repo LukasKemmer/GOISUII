@@ -292,6 +292,26 @@ da $\hat{x}^TA\hat{d} = (\hat{d}^TA\hat{x})^T =  \hat{d}^TA\hat{x}$ gilt, da es 
 \begin{equation*}
 	LQ: \quad \min_{t \in \mathbb{R}} \frac{1}{2} \hat{d}^TA\hat{d}t^2 + \langle \nabla h(\hat{x}), d \rangle t \quad \text{s. t.} \quad 0\leq t \leq 1.
 \end{equation*}
+Im folgenden sei $Q \coloneqq \hat{d}^TA\hat{d}\geq 0$ (wegen $A \succeq 0$) sowie $c \coloneqq \langle \nabla h(\hat{x}), \hat{d} \rangle < 0$ sowie $f: \mathbb{R} \rightarrow \mathbb{R}, \ f(t) \coloneqq 0,5Qt^2+ct$ mit $f'(t)=Qt+c$ und $f''(t)=Q$. Wegen $f''(t)=Q\geq 0$ ist $f$ nach Satz 2.5.3 konvex. Da die Nebenbedingungen aus $LQ$ auch als zwei lineare und damit insbesondere konvexe Funktionen ($g_1(t)=-t$, $g_2(t)=t-1$) geschrieben werden können gilt weiter das die zulässige Menge $M = \{t \in \mathbb{R} \ | \ g_i(t) \leq 0, i\in \{1,2\} \}$ nach Definition 2.1.10 konvex beschrieben ist und mit Lemma 2.1.11 folgt, dass $M$ konvex ist. Nach Definition 2.1.5 folgt, dass es sich bei $LQ$ um ein konvexes Optimierungsproblem handelt und damit nach Satz 2.1.6 jeder lokale Minimalpunkt von $LQ$ auch ein globaler Minimalpunkt von $LQ$ ist. Zur Lösung von $LQ$ nehmen wir nun eine Fallunterscheidung vor. \par
+\textbf{\underline{Fall 1: $Q = 0$.}}
+Mit $Q=0$ folgt $f(t)=ct$ mit $c<0$. Damit gilt offensichtlich $\forall t \in M: c \leq tc$ und damit, dass es sich bei $t^*=1$ um einen gobalen Minimalpunkt von $LQ$ handelt. \par
+\textbf{\underline{Fall 2.1: $Q > 0$ und $-c > Q$.}} Es folgt $f'(t)=Qt+c \leq Q+c < 0$ wegen $t \in [0,1]$ sowie $-c < Q$ und damit, dass $f$ auf dem Interval $[0,1]$ streng monoton fallend ist. Damit gilt auch hier, dass $t^*=1$ der globale Minimalpunkt von $LQ$ ist (es gilt auch $\forall t \in M: 0,5Q(t^*)^2 +ct^* = 0,5Q+c \leq (0,5Q+c)t = 0,5Qt + ct \leq 0,5Qt^2+ct$ wegen $Q+c<0$, $ Q > 0$ und $0 \leq t \leq 1$). \par
+\textbf{\underline{Fall 2.1: $Q > 0$ und $-c \leq Q$.}} Zur Bestimmung des globalen Minimalpunktes bestimmen wir mit Satz 2.4.5 den kritischen Punkt von $f$. Es gilt
+\begin{equation*}
+	\begin{split}
+		Qt^*+c &\stackrel{!}{=} 0 \\
+	\Leftrightarrow	t^* &= -\frac{c}{Q} \in (0,1]
+	\end{split}
+\end{equation*}
+wobei $t^* \in (0,1]$ gilt wegen $c<0$ und $-c\leq Q$. Da der globale Minimalpunkt von $f$ in $M$ liegt, ist er auch der globale Minimalpunkt von $LQ$. \par
+Insgesamt folgt für den eindeutigen globalen Minimalpunkt $t^*$ von $LQ$
+\begin{equation*}
+	t^* = 
+		\begin{cases}
+		-\frac{c}{Q},& Q>0 \land -c \leq Q,\\
+		1 & \text{sonst}.\\
+	\end{cases}
+\end{equation*}
 \par
 (c) 
 \par
