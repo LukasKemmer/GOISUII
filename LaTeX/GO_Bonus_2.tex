@@ -103,7 +103,7 @@ folgt, dass diese Vorderung nur für $x=0$ erfüllt ist. Damit gilt $Kern(A^TA +
 \begin{equation*}
 	\begin{split}
 	(A^TA+\alpha R^TR)x &=A^Tb \\
-	\Leftrightarrow x&= (A^TA+\alpha R^TR)^{-1} A^Tb	
+	\Leftrightarrow x&= (A^TA+\alpha R^TR)^{-1} A^Tb.
 	\end{split}
 \end{equation*}
 % und es folgt
@@ -119,7 +119,7 @@ folgt, dass diese Vorderung nur für $x=0$ erfüllt ist. Damit gilt $Kern(A^TA +
 %da nur für $x=0:(Ax=0)\wedge (Rx=0)$.
 %\textcolor{red}{Damit ist $A^TA+\alpha R^TR$ invertierbar}
 \par
-(b) Sei $f: \mathbb{R}^n \rightarrow \mathbb{R}$ mit $f(x) = \|Ax-b \|_2^2 + \alpha \|Rx \|_2^2$. Wegen $D^2( \|x \|_2^2)=2I \succeq 0$, der Linearität von $Ax-b$ sowie $Rx$ und $\alpha > 0$ folgt mit Übungen 4.4, 4.6 und Satz 2.5.3 die Konvexität von $f$ als Summe konvexer Funktionen \footnote{Wir haben gezeigts, dass die quadierte euklidische Norm eine konvexe Funktion ist, die Anwendung dieser auf eine lineare Funktion wieder konvex ist und die Summe konvexer Funktionen konvex ist.} (merke, dass es sich um ein unrestringiertes Problem mit $M=\mathbb{R}^n$ handelt und der $\mathbb{R}^n$ eine konvexe Menge ist). Mit Satz 2.4.5 und Korollar 2.4.6 folgt, dass die kritischen Punkte von $f$ genau die globalen Minimalpunkte sind. Es gilt
+(b) Sei $f: \mathbb{R}^n \rightarrow \mathbb{R}$ mit $f(x) = \|Ax-b \|_2^2 + \alpha \|Rx \|_2^2$. Wegen $D^2( \|x \|_2^2)=2I \succeq 0$, der Linearität von $Ax-b$ sowie $Rx$ und $\alpha > 0$ folgt mit Übungen 4.4, 4.6 und Satz 2.5.3 die Konvexität von $f$ als Summe konvexer Funktionen \footnote{Wir haben gezeigt/ausgenutzt, dass die quadierte euklidische Norm eine konvexe Funktion ist, die Anwendung dieser auf eine lineare Funktion wieder zu einer konvexen Funktion führt und die Summe konvexer Funktionen konvex ist.} (merke, dass es sich um ein unrestringiertes Problem mit $M=\mathbb{R}^n$ handelt und der $\mathbb{R}^n$ eine konvexe Menge ist). Mit Satz 2.4.5 und Korollar 2.4.6 folgt, dass die kritischen Punkte von $f$ genau die globalen Minimalpunkte sind. Es gilt
 \begin{equation}
 	\nabla f(x) = 2A^T(Ax-b) + 2\alpha R^TRx
 \end{equation}
@@ -194,7 +194,7 @@ Mithilfe von Gleichung \refeq{eq:lagrange} ergibt sich das Lagrange-Dualproblem
 \begin{equation*}
 	\begin{split}
 	LD: &\max_{\mu} \inf_{x,z} \|x-y\|_2^2+\alpha\|z\|_1 - \mu^Tz + \mu^TLx \\
-			&\max_{\mu} \left( \inf_{x} \left( \underbrace{\|x-y\|_2^2 + \mu^TLx}_{\eqqcolon g(x)}  \right) + \inf_{z} \left( 
+			\Leftrightarrow &\max_{\mu} \left( \inf_{x} \left( \underbrace{\|x-y\|_2^2 + \mu^TLx}_{\eqqcolon g(x)}  \right) + \inf_{z} \left( 
 			\underbrace{\alpha\|z\|_1 - \mu^Tz}_{\eqqcolon h(x)}  \right) \right).
 	\end{split}
 \end{equation*}
@@ -206,7 +206,7 @@ Wir betrachten nun zunächst die beiden Funktionen.
 Für $g(x)$ gilt
 \begin{equation*}
 	\begin{split}
-		\nabla g(x) &= 2(x-y) + L^T\mu. \\
+		\nabla g(x) &= 2(x-y) + L^T\mu, \\
 		D^2 g(x) &= 2 I \succeq 0.
 	\end{split}
 \end{equation*}
@@ -245,7 +245,7 @@ Dabei folgt die Fallunterscheidung für $\gamma_i$, da für $|\mu_i|>\alpha$ der
 Insgesamt folgt 
 \begin{equation*}
 	\begin{split}
-		\inf_z h(x) &=  \inf_{z} \mu^Tz+\alpha\|z\|_1 \\
+		\inf_z h(x) &=  \inf_{z} -\mu^Tz+\alpha\|z\|_1 \\
 		&=\begin{cases}
 		-\infty,&\exists i \in \{1,..., n-1\}:|\mu_i | >\alpha,\\
 		0,&\|\mu\|_\infty\leq\alpha.\\
@@ -269,10 +269,10 @@ mit $f^-(\mu) \coloneqq \frac{1}{4}\mu^TLL^T\mu - \mu^TLy$ ist. Es gilt
 \begin{equation*}
 	\begin{split}
 		\nabla f^-(\mu) &= \frac{1}{2} LL^T\mu - Ly, \\
-		D^2f^-(\mu) &= \frac{1}{2} L^TL \succeq 0,
+		D^2f^-(\mu) &= \frac{1}{2} LL^T \succeq 0,
 	\end{split}
 \end{equation*}
-und damit, dass $f^-$ nach Satz 2.5.3 konvex ist. Mit Hilfe von Korollar 2.4.6 folgt weiter, dass $\bar{\mu}$ auch ein kritischer Punkt von $f^-$ ist. Es ergibt sich
+und damit, dass $f^-$ nach Satz 2.5.3 konvex ist (positive semi-Definitheit von $LL^T$ gilt wegen $x^TLL^Tx=\|L^Tx \|_2^2\geq0$). Mit Hilfe von Korollar 2.4.6 folgt weiter, dass $\bar{\mu}$ auch ein kritischer Punkt von $f^-$ ist. Es ergibt sich
 \begin{equation}
 \label{eq:22d}
 	\begin{split}
@@ -293,7 +293,7 @@ Aufgrund der starken Dualität folgt weiter, dass der Maximalwert $\nu_{LD}$ von
 		&= \nu_{LD},
 	\end{split}
 \end{equation*}
-wobei die zweite Gleichung wegen der zweiten Zeile aus \eqref{eq:22d} gilt und die fünfte Gleichung wegen der dritten Zeile aus \eqref{eq:22d} gilt. Damit gilt $\|\bar{x} - y\|_2^2 + \alpha \| L\bar{x}\|_1 = \nu_{LD} = \nu_{RL_1}$ und damit (mit Definition 1.1.3), dass $\bar{x}$ ein globaler Minimalpunkt von $RL_1$ ist (merke, dass wir die Zulässigkeit von $\bar{x}$ für $RL_1$ nicht prüfen müssen, da die zulässige Menge der $R^n$ ist).
+wobei die zweite Gleichung wegen der zweiten Zeile aus \eqref{eq:22d} gilt und die fünfte Gleichung wegen der dritten Zeile aus \eqref{eq:22d} gilt. Damit gilt $\|\bar{x} - y\|_2^2 + \alpha \| L\bar{x}\|_1 = \nu_{LD} = \nu_{RL_1}$ und damit (mit Definition 1.1.3), dass $\bar{x}$ ein globaler Minimalpunkt von $RL_1$ ist (merke, dass wir die Zulässigkeit von $\bar{x}$ für $RL_1$ nicht prüfen müssen, da die zulässige Menge der $\mathbb{R}^n$ ist).
 %Sei $\bar{\mu}$ ein globaler Minimalpunkt von $LP$. Es gilt 
 %\begin{equation*}
 %	\nabla_x L(x, z, \bar{\mu}) = 2(x-y)+ L^T\bar{\mu}
@@ -349,7 +349,7 @@ Es gilt für alle $x \in \mathbb{R}^n$
 		&= -\alpha \sum_{i=1}^{n} c_i sgn(c_i) 
 	\end{split}
 \end{equation*}
-mit $sgn(x_i)$ dem Vorzeichen von $x_i$. Es sei angemerkt, dass die zweite Ungleichung aus der Nebenbedingung $\| x \|_{\infty} \leq \alpha$ sowie $\alpha > 0$ folgt. Insgesamt gilt, dass $x^*$ mit Vektoreinträgen $x^*_i = - \alpha sgn(c_i)$ nach Definition 1.1.3 ein globaler Minimalpunkt von $LP'$ und damit auch von $LP$ ist.
+mit $sgn(c_i)$ dem Vorzeichen von $c_i$. Es sei angemerkt, dass die zweite Ungleichung aus der Nebenbedingung $\| x \|_{\infty} \leq \alpha$ sowie $\alpha > 0$ folgt. Insgesamt gilt, dass $x^*$ mit Vektoreinträgen $x^*_i = - \alpha sgn(c_i)$ nach Definition 1.1.3 ein globaler Minimalpunkt von $LP'$ und damit auch von $LP$ ist.
 \par
 (b) Es gilt 
 \begin{equation*}
@@ -365,7 +365,7 @@ da $\hat{x}^TA\hat{d} = (\hat{d}^TA\hat{x})^T =  \hat{d}^TA\hat{x}$ gilt, da es 
 Im folgenden sei $q \coloneqq \hat{d}^TA\hat{d}\geq 0$ (wegen $A \succeq 0$), $p \coloneqq \langle \nabla h(\hat{x}), \hat{d} \rangle < 0$ sowie $f: \mathbb{R} \rightarrow \mathbb{R}, \ f(t) \coloneqq 0,5qt^2+pt$ mit $f'(t)=qt+p$ und $f''(t)=q$. Wegen $f''(t)=q\geq 0$ ist $f$ nach Satz 2.5.3 konvex. Da die Nebenbedingungen aus $LQ'$ auch als zwei lineare und damit insbesondere konvexe Funktionen ($g_1(t)=-t$, $g_2(t)=t-1$) geschrieben werden können gilt weiter, dass die zulässige Menge $M = \{t \in \mathbb{R} \ |Â \ g_i(t) \leq 0, i\in \{1,2\} \}$ nach Definition 2.1.10 konvex beschrieben ist und mit Lemma 2.1.11 folgt, dass $M$ konvex ist. Nach Definition 2.1.5 folgt, dass es sich bei $LQ'$ um ein konvexes Optimierungsproblem handelt und damit nach Satz 2.1.6 jeder lokale Minimalpunkt von $LQ'$ auch ein globaler Minimalpunkt von $LQ'$ ist. Zur Lösung von $LQ'$ nehmen wir nun eine Fallunterscheidung vor. \par
 \textbf{\underline{Fall 1: $q = 0$.}}
 Mit $q=0$ folgt $f(t)=pt$ mit $p<0$. Damit gilt offensichtlich $\forall t \in M: p \leq tp$ und damit, dass es sich bei $t^*=1$ um einen gobalen Minimalpunkt von $LQ'$ handelt. \par
-\textbf{\underline{Fall 2.1: $q > 0$ und $-p > q$.}} Es folgt für $t \in M:$ $f'(t)=qt+p \leq q+p < 0$ wegen $t \in [0,1]$ sowie $-p > q$ und damit, dass $f$ auf dem Interval $[0,1]$ streng monoton fallend ist. Damit gilt auch hier, dass $t^*=1$ der globale Minimalpunkt von $LQ'$ ist %(es gilt auch $\forall t \in M: 0,5q(t^*)^2 +pt^* = 0,5q+p \leq (0,5q+p)t = 0,5qt + pt \leq 0,5qt^2+pt$ wegen $q+p<0$, $ q > 0$ und $0 \leq t \leq 1$). 
+\textbf{\underline{Fall 2.1: $q > 0$ und $-p > q$.}} Es folgt für $t \in M:$ $f'(t)=qt+p \leq q+p < 0$ wegen $t \in [0,1]$ sowie $-p > q$ und damit, dass $f$ auf dem Interval $[0,1]$ streng monoton fallend ist. Damit gilt auch hier, dass $t^*=1$ der globale Minimalpunkt von $LQ'$ ist.%(es gilt auch $\forall t \in M: 0,5q(t^*)^2 +pt^* = 0,5q+p \leq (0,5q+p)t = 0,5qt + pt \leq 0,5qt^2+pt$ wegen $q+p<0$, $ q > 0$ und $0 \leq t \leq 1$). 
 \par
 \textbf{\underline{Fall 2.2: $q > 0$ und $-p \leq q$.}} Zur Bestimmung des globalen Minimalpunktes bestimmen wir wegen Satz 2.4.5 den kritischen Punkt von $f$. Es gilt
 \begin{equation*}
