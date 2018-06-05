@@ -119,20 +119,20 @@ folgt, dass diese Vorderung nur für $x=0$ erfüllt ist. Damit gilt $Kern(A^TA +
 %da nur für $x=0:(Ax=0)\wedge (Rx=0)$.
 %\textcolor{red}{Damit ist $A^TA+\alpha R^TR$ invertierbar}
 \par
-(b) Sei $f: \mathbb{R}^n \rightarrow \mathbb{R}$ mit $f(x) = \|Ax-b \|_2^2 + \alpha \|Rx \|_2^2$. Wegen $D^2( \|x \|_2^2)=2I \succeq 0$, der Linearität von $Ax-b$ sowie $Rx$ und $\alpha > 0$ folgt mit Übungen 4.4, 4.6 und Satz 2.5.3 die Konvexität von $f$ als Summe konvexer Funktionen (merke, dass es sich um ein unrestringiertes Problem mit $M=\mathbb{R}^n$ handelt und der $\mathbb{R}^n$ eine konvexe Menge ist). Mit Satz 2.4.5 und Korollar 2.4.6 folgt, dass die kritischen Punkte von $f$ genau die globalen Minimalpunkte sind. Es gilt
+(b) Sei $f: \mathbb{R}^n \rightarrow \mathbb{R}$ mit $f(x) = \|Ax-b \|_2^2 + \alpha \|Rx \|_2^2$. Wegen $D^2( \|x \|_2^2)=2I \succeq 0$, der Linearität von $Ax-b$ sowie $Rx$ und $\alpha > 0$ folgt mit Übungen 4.4, 4.6 und Satz 2.5.3 die Konvexität von $f$ als Summe konvexer Funktionen \footnote{Wir haben gezeigts, dass die quadierte euklidische Norm eine konvexe Funktion ist, die Anwendung dieser auf eine lineare Funktion wieder konvex ist und die Summe konvexer Funktionen konvex ist.} (merke, dass es sich um ein unrestringiertes Problem mit $M=\mathbb{R}^n$ handelt und der $\mathbb{R}^n$ eine konvexe Menge ist). Mit Satz 2.4.5 und Korollar 2.4.6 folgt, dass die kritischen Punkte von $f$ genau die globalen Minimalpunkte sind. Es gilt
 \begin{equation}
 	\nabla f(x) = 2A^T(Ax-b) + 2\alpha R^TRx
 \end{equation}
 und damit
 \begin{equation*}
 	\begin{split}
-		2A^T(A\bar{x}-b) + 2\alpha R^TR\bar{x} &= 0 \\
+		2A^T(A\bar{x}-b) + 2\alpha R^TR\bar{x} &\stackrel{!}{=} 0 \\
 		\Leftrightarrow A^TA\bar{x}-A^Tb+\alpha R^TR\bar{x} &=0 \\
 		\Leftrightarrow (A^TA+\alpha R^TR)\bar{x} &=A^Tb \\
 		\Leftrightarrow \bar{x} &= (A^TA+\alpha R^TR)^{-1}A^Tb.
 	\end{split}
 \end{equation*}
-Damit ist die eindeutige Lösung des linearen Gleichungssystems aus (a) genau der eindeutige globale Minimalpunkt von $P$.
+Damit ist $\bar{x}$, die eindeutige Lösung des linearen Gleichungssystems aus (a), genau der eindeutige globale Minimalpunkt von $P$.
 %Es handelt sich bei dem Gleichungssystem aus (a) offensichtlich um ein konvexes Optimierungsproblem.
 %Entsprechend sind alle kritischen Punkte auch Nullstellen.
 %Es gilt:
@@ -287,8 +287,8 @@ Aufgrund der starken Dualität folgt weiter, dass der Maximalwert $\nu_{LD}$ von
 		&=  \frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} + \alpha \|Ly - \frac{1}{2}2Ly \|_1 \\
 		&= \frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} \\
 		&= -\frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} + \frac{1}{2}\bar{\mu}^TLL^T\bar{\mu}\\
-		&= -\frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} \frac{1}{2} 2\bar{\mu}^TLy\\
-		&= -\frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} \bar{\mu}^TLy \\
+		&= -\frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} + \frac{1}{2} 2\bar{\mu}^TLy\\
+		&= -\frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} + \bar{\mu}^TLy \\
 		&= \nu_{LD},
 	\end{split}
 \end{equation*}
