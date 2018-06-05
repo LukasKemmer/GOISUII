@@ -110,7 +110,7 @@ folgt, dass diese Vorderung nur für $x=0$ erfüllt ist. Damit gilt $Kern(A^TA +
 %\begin{equation}
 %	x = (A^TA+\alpha R^TR)^-1 A^Tb.
 %\end{equation}
-%Gemäß $A6$ besitzt $A^TA+\alpha R^TR$ vollen Rang, so $Kern(A^TA+\alpha R^TR=\{0\}$
+%GemäÃ $A6$ besitzt $A^TA+\alpha R^TR$ vollen Rang, so $Kern(A^TA+\alpha R^TR=\{0\}$
 %Kern(A)\cap Kern(R)=\{0\} \Rightarrow \{x\in \mathbb R^n|Ax=0\}\cap\{x\in\mathbb R^n|Rx=0\}
 %Es gilt: $Kern(A^TA+\alpha R^TRx)$\\[10pt]
 %=$\{x\in\mathbb R^n|(A^TA+\alpha R^TR)x=0\}$\\[10pt]
@@ -177,7 +177,7 @@ Der Rest der Lösung ist in dem angehängten Python-Code dokumentiert.
 	\caption{Ergebnisse aus $RL_2$ mit $\alpha \in \{1, 5, 10, 50\}$.}
 	\vspace{-20pt}
 \end{figure}
-Mithilfe von $RL_2$ erhalten wir Approximationen der Werte $f(t_k)$ die augenscheinlich einer glatten Funktion ähneln. Bei Betrachtung der zugrunde liegenden Daten können jedoch drei potentielle Sprungstellen identifiziert werden, bei denen die Sprünge deutlich stärker ausfallen als das sonst vorliegende Rauschen. Es ist daher fraglich, ob es sich bei dem Ergebnis von $RL_2$ um eine gute Approximation handelt. Darüber hinaus sollte beachtet werden, dass das Ergebnis von $RL_2$ maßgeblich von der Wahl des Parameters $\alpha$ abhängt. Da jedoch nicht klar ist, welches $\alpha$ zu den besten Approximationen von $f(t_k)$ führt muss das Ergebnis von $RL_2$ auch hier mit Vorsicht genossen werden.
+Mithilfe von $RL_2$ erhalten wir Approximationen der Werte $f(t_k)$, die augenscheinlich einer glatten Funktion ähneln. Bei Betrachtung der zugrunde liegenden Daten können jedoch drei potentielle Sprungstellen identifiziert werden, bei denen die Sprünge deutlich stärker ausfallen als das sonst vorliegende Rauschen. Es ist daher fraglich, ob es sich bei dem Ergebnis von $RL_2$ um eine gute Approximation handelt. Darüber hinaus sollte beachtet werden, dass das Ergebnis von $RL_2$ maßgeblich von der Wahl des Parameters $\alpha$ abhängt. Da jedoch nicht klar ist, welches $\alpha$ zu den besten Approximationen von $f(t_k)$ führt, muss das Ergebnis von $RL_2$ auch hier mit Vorsicht genossen werden.
 \par
 (c) Es gilt
 \begin{equation*}
@@ -185,7 +185,7 @@ Mithilfe von $RL_2$ erhalten wir Approximationen der Werte $f(t_k)$ die augensch
 	CRL_1: \min_{x\in\mathbb R^n,z \in \mathbb{R}^{n-1}}\|x-y\|_2^2+\alpha\|z\|_1 \quad s.t. \quad Lx = z \Leftrightarrow Lx - z=0
 	\end{split}
 \end{equation*}
-Für die Lagrange-funktion folgt damit
+Für die Lagrange-Funktion folgt damit
 \begin{equation}
 \label{eq:lagrange}
 L(x,z,\mu)=\|x-y\|_2^2+\alpha \|z\|_1+\mu^T(Lx - z), \quad \mu \in \mathbb{R}^{n-1}.
@@ -198,7 +198,8 @@ Mithilfe von Gleichung \refeq{eq:lagrange} ergibt sich das Lagrange-Dualproblem
 			\underbrace{\alpha\|z\|_1 - \mu^Tz}_{\eqqcolon h(x)}  \right) \right).
 	\end{split}
 \end{equation*}
-Dabei sei angemerkt, dass die Separierbarkeit des infimums analog zu Übung 1.3.2 aus dem Buch erfolgt. Wir betrachten nun zunächst die beiden Funktionen .
+Dabei sei angemerkt, dass die Separierbarkeit des infimums analog zu Übung 1.3.2 aus dem Buch erfolgt.
+Wir betrachten nun zunächst die beiden Funktionen.
 %\begin{equation*}
 %  \Rightarrow \underbrace{\inf_{x,z} (\|x-y\|_2^2-\mu^TLx)}_{a} + \underbrace{\inf_z(\mu^Tz+\alpha\|z\|_1)}_{b}
 %\end{equation*}
@@ -209,7 +210,7 @@ Für $g(x)$ gilt
 		D^2 g(x) &= 2 I \succeq 0.
 	\end{split}
 \end{equation*}
-%Damit folgt nach Satz 2.5.10, dass $g(x)$ gleichmäßig konvex ist (beachte, dass alle Eigenwerte der Hessematrix $2$ und damit echt größer $0$ sind, da bei einer Diagonalmatrix die Eigenwerte den Diagonaleinträgen der Matrix entsprechen). 
+%Damit folgt nach Satz 2.5.10, dass $g(x)$ gleichmäÃig konvex ist (beachte, dass alle Eigenwerte der Hessematrix $2$ und damit echt gröÃer $0$ sind, da bei einer Diagonalmatrix die Eigenwerte den Diagonaleinträgen der Matrix entsprechen). 
 Damit folgt nach Satz 2.5.3, dass $g(x)$ konvex ist (beachte, dass alle Eigenwerte der Hessematrix $2$ und damit $\geq 0$ sind weswegen mit Satz 6 der mathematischen Grundlagen positive semi-definitheit folgt, da bei einer Diagonalmatrix die Eigenwerte den Diagonaleinträgen der Matrix entsprechen). Mithilfe von Korollar 2.4.6 folgt, dass mithilfe der kritischen Punkte die Globalen Minimalpunkte und damit das Infimum von $g(x)$ gefunden werden können (dies wird als globaler Minimalpunkt auch angenommen). Es folgt
 \begin{equation*}
 	\begin{split}
@@ -251,7 +252,7 @@ Insgesamt folgt
 		\end{cases}
 	\end{split}
 \end{equation*}
-Da $\inf_z h(x)$ für $\| \mu \|_{\infty} > \alpha $ (entspricht $\exists i \in \{1,..., n-1\}:|\mu_i | >\alpha$) auf $-\infty$ und damit nicht mehr in die reelen Zahlen abbildet handeln wir analog zu Aufgabe 5.5 der Übung und fügen $\| \mu \|_{\infty}$ als Nebenbedingung zu $LD$ hinzu und setzen $\inf_z h(x)=0$. Es ergibt sich
+Da $\inf_z h(x)$ für $\| \mu \|_{\infty} > \alpha $ (entspricht $\exists i \in \{1,..., n-1\}:|\mu_i | >\alpha$) auf $-\infty$ und damit nicht mehr in die reellen Zahlen abbildet handeln wir analog zu Aufgabe 5.5 der Übung und fügen $\| \mu \|_{\infty}$ als Nebenbedingung zu $LD$ hinzu und setzen $\inf_z h(x)=0$. Es ergibt sich
 %\begin{equation*}
  % \Rightarrow \max_\mu \|x-y\|_2^2+\alpha\|z\|_1+\mu^T(z-Lx)
 %\end{equation*}
@@ -292,7 +293,7 @@ Aufgrund der starken Dualität folgt weiter, dass der Maximalwert $\nu_{LD}$ von
 		&= \nu_{LD},
 	\end{split}
 \end{equation*}
-wobei die zweite Gleichung wegen der zweiten Zeile aus \eqref{eq:22d} gilt und die fünfte Gleichung wegen der dritten Zeile aus \eqref{eq:22d} gilt. Damit gilt $\|\bar{x} - y\|_2^2 + \alpha \| L\bar{x}\|_1 = \nu_{LD} = \nu_{RL_1}$ und damit (mit Definition 1.1.3), dass $\bar{x}$ ein globaler Minimalpunkt von $RL_1$ ist (merke, dass wir die Zulässigkeit von $\bar{x}$ für $RL_1$ nicht prüfen müssen, da die Zulässige Menge der $R^n$ ist).
+wobei die zweite Gleichung wegen der zweiten Zeile aus \eqref{eq:22d} gilt und die fünfte Gleichung wegen der dritten Zeile aus \eqref{eq:22d} gilt. Damit gilt $\|\bar{x} - y\|_2^2 + \alpha \| L\bar{x}\|_1 = \nu_{LD} = \nu_{RL_1}$ und damit (mit Definition 1.1.3), dass $\bar{x}$ ein globaler Minimalpunkt von $RL_1$ ist (merke, dass wir die Zulässigkeit von $\bar{x}$ für $RL_1$ nicht prüfen müssen, da die zulässige Menge der $R^n$ ist).
 %Sei $\bar{\mu}$ ein globaler Minimalpunkt von $LP$. Es gilt 
 %\begin{equation*}
 %	\nabla_x L(x, z, \bar{\mu}) = 2(x-y)+ L^T\bar{\mu}
@@ -305,7 +306,7 @@ wobei die zweite Gleichung wegen der zweiten Zeile aus \eqref{eq:22d} gilt und d
 %	\end{split}
 %\end{equation*}
 %Damit folgt, dass der Punkt $(\bar{x}, \bar{z}, \bar{\mu})$ mit passend gewähltem $\bar{z}$ nach Definition 2.7.5 der Maximalpunkt des Wolfe-Duals ist. Er ist wegen $\nabla _x L(\bar{x},\bar{z}, \bar{\mu}) = 0$, $\bar{\mu}$ gegeben aus der Aufgabenstellung und $\bar{z}$ passend gewählt insbesondere dual zulässig. Da der Punkt $\bar{x}$ weiterhin für passendes $\bar{z}$ primal zulässig ist folgt mit 2.7.12 das $\bar{x}$ ein Optimalpunkt für $CRL_1$ und damit auch für $RL_1$ ist.
-%Gemäß Aufgabenstellung gilt: $\bar x$ ist primal zulässig für $Lx=z$. Außerdem gilt aufgrund $\nabla_x L(x,z,\mu)=2x-2y+\mu L$, dass $(\bar\mu,\bar x)$ dual zulässig ist, so man zu beliebigem $\bar \mu\in \mathbb R^{n-1}$ den Punkt $\bar x=\frac{2y-\mu L}{2}$ wählt. Damit gleichzeitig Bedingung $a$ $\&$ $b$ aus Lemma 2.7.10. gelten, müssen $\bar x$ und  $\bar \mu$ also folgendes Gleichungssystem erfüllen:
+%GemäÃ Aufgabenstellung gilt: $\bar x$ ist primal zulässig für $Lx=z$. AuÃerdem gilt aufgrund $\nabla_x L(x,z,\mu)=2x-2y+\mu L$, dass $(\bar\mu,\bar x)$ dual zulässig ist, so man zu beliebigem $\bar \mu\in \mathbb R^{n-1}$ den Punkt $\bar x=\frac{2y-\mu L}{2}$ wählt. Damit gleichzeitig Bedingung $a$ $\&$ $b$ aus Lemma 2.7.10. gelten, müssen $\bar x$ und  $\bar \mu$ also folgendes Gleichungssystem erfüllen:
 %\begin{equation*}
  % \begin{split}
  % 	&\bar x=\frac{2y-\mu L}{2}\\
@@ -322,7 +323,7 @@ wobei die zweite Gleichung wegen der zweiten Zeile aus \eqref{eq:22d} gilt und d
 %\end{equation*}
 
 %Dabei sind $z,y$ und $L$ vorgegeben. Damit Bedingung $c$ von Lemma 2.7.10 gilt, muss folgende Gleichung erfüllt sein: $f(x^*)=L(x^*,\mu^*)$.
-%\textcolor{red}{Da das zugrunde liegende Problem $RL_1$ keine Ungleichheiten aufweist, erfüllen $(x^*,\mu^*)$ gemäß Buch S. 74 automatisch auch Bedingung $c$. Damit ist $\bar x$ globaler Minimalpunkt von $RL_1$.}
+%\textcolor{red}{Da das zugrunde liegende Problem $RL_1$ keine Ungleichheiten aufweist, erfüllen $(x^*,\mu^*)$ gemäÃ Buch S. 74 automatisch auch Bedingung $c$. Damit ist $\bar x$ globaler Minimalpunkt von $RL_1$.}
 
 \par
 
@@ -361,7 +362,7 @@ da $\hat{x}^TA\hat{d} = (\hat{d}^TA\hat{x})^T =  \hat{d}^TA\hat{x}$ gilt, da es 
 \begin{equation*}
 	LQ': \quad \min_{t \in \mathbb{R}} \frac{1}{2} \hat{d}^TA\hat{d}t^2 + \langle \nabla h(\hat{x}), \hat{d} \rangle t \quad \text{s. t.} \quad 0\leq t \leq 1.
 \end{equation*}
-Im folgenden sei $q \coloneqq \hat{d}^TA\hat{d}\geq 0$ (wegen $A \succeq 0$), $p \coloneqq \langle \nabla h(\hat{x}), \hat{d} \rangle < 0$ sowie $f: \mathbb{R} \rightarrow \mathbb{R}, \ f(t) \coloneqq 0,5qt^2+pt$ mit $f'(t)=qt+p$ und $f''(t)=q$. Wegen $f''(t)=q\geq 0$ ist $f$ nach Satz 2.5.3 konvex. Da die Nebenbedingungen aus $LQ'$ auch als zwei lineare und damit insbesondere konvexe Funktionen ($g_1(t)=-t$, $g_2(t)=t-1$) geschrieben werden können gilt weiter, dass die zulässige Menge $M = \{t \in \mathbb{R} \ | \ g_i(t) \leq 0, i\in \{1,2\} \}$ nach Definition 2.1.10 konvex beschrieben ist und mit Lemma 2.1.11 folgt, dass $M$ konvex ist. Nach Definition 2.1.5 folgt, dass es sich bei $LQ'$ um ein konvexes Optimierungsproblem handelt und damit nach Satz 2.1.6 jeder lokale Minimalpunkt von $LQ'$ auch ein globaler Minimalpunkt von $LQ'$ ist. Zur Lösung von $LQ'$ nehmen wir nun eine Fallunterscheidung vor. \par
+Im folgenden sei $q \coloneqq \hat{d}^TA\hat{d}\geq 0$ (wegen $A \succeq 0$), $p \coloneqq \langle \nabla h(\hat{x}), \hat{d} \rangle < 0$ sowie $f: \mathbb{R} \rightarrow \mathbb{R}, \ f(t) \coloneqq 0,5qt^2+pt$ mit $f'(t)=qt+p$ und $f''(t)=q$. Wegen $f''(t)=q\geq 0$ ist $f$ nach Satz 2.5.3 konvex. Da die Nebenbedingungen aus $LQ'$ auch als zwei lineare und damit insbesondere konvexe Funktionen ($g_1(t)=-t$, $g_2(t)=t-1$) geschrieben werden können gilt weiter, dass die zulässige Menge $M = \{t \in \mathbb{R} \ |Â \ g_i(t) \leq 0, i\in \{1,2\} \}$ nach Definition 2.1.10 konvex beschrieben ist und mit Lemma 2.1.11 folgt, dass $M$ konvex ist. Nach Definition 2.1.5 folgt, dass es sich bei $LQ'$ um ein konvexes Optimierungsproblem handelt und damit nach Satz 2.1.6 jeder lokale Minimalpunkt von $LQ'$ auch ein globaler Minimalpunkt von $LQ'$ ist. Zur Lösung von $LQ'$ nehmen wir nun eine Fallunterscheidung vor. \par
 \textbf{\underline{Fall 1: $q = 0$.}}
 Mit $q=0$ folgt $f(t)=pt$ mit $p<0$. Damit gilt offensichtlich $\forall t \in M: p \leq tp$ und damit, dass es sich bei $t^*=1$ um einen gobalen Minimalpunkt von $LQ'$ handelt. \par
 \textbf{\underline{Fall 2.1: $q > 0$ und $-p > q$.}} Es folgt für $t \in M:$ $f'(t)=qt+p \leq q+p < 0$ wegen $t \in [0,1]$ sowie $-p > q$ und damit, dass $f$ auf dem Interval $[0,1]$ streng monoton fallend ist. Damit gilt auch hier, dass $t^*=1$ der globale Minimalpunkt von $LQ'$ ist %(es gilt auch $\forall t \in M: 0,5q(t^*)^2 +pt^* = 0,5q+p \leq (0,5q+p)t = 0,5qt + pt \leq 0,5qt^2+pt$ wegen $q+p<0$, $ q > 0$ und $0 \leq t \leq 1$). 
@@ -408,6 +409,6 @@ Insgesamt folgt für den eindeutigen globalen Minimalpunkt $t^*$ von $LQ'$ und d
 	\vspace{-20pt}
 \end{figure}
 \par
-(e) Der Ansatz aus Teilaufgabe d) ist im vorliegenden Fall besser als der Ansatz aus Aufgabe S2.2 geeignet um das zufälliger Rauschen aus den Messwerten zu entfernen. Dies liegt daran, dass der Datensatz Sprünge aufweist die kaum über das natürliche rauschen zu erklären sind. Der Ansatz aus Teilaufgabe d) ist dabei besser geeignet als der Ansatz aus S2.2, da er die Sprungstellen in den Daten verbleiben lässt, wohingegen der Ansatz aus S2.2 zu einer quasi-glatten Funktion führt. Die Unterschiedlichen Ergebnisse sind ein Resultat der verschiedenen Normen der Regularisierungs-Terme. Die quadrierte Euklidische Norm aus S2.2 bestraft große Sprünge besonders stark (quadratisch) und versucht daher sie tendenziell \glqq zu vermeiden\grqq, wohin gegen die 1-Norm aus Teilaufgabe d) nur die absolute Sprunghöhe bestraft und die Sprünge daher tendenziell zunächst \glqq beibehällt\grqq ~(merke das sich bei beiden Normen mit steigendem $\alpha$ die Ergebnisse einer horizontalen Geraden um den Mittelwert annähern). Dies entspricht auch den Ergebnisse aus Aufgabe S1.2d, bei der ebenfalls die Unterschiedlichen Auswirkungen von Ausreißern (hier analog zu den Sprungstellen) auf die 1-Norm und die quadrierte euklidische Norm gezeigt worden sind. Auch dort hat die quadrierte euklidische Norm deutlich stärker auf Aussreißer reagiert und die 1-Norm sich robuster verhalten.
+(e) Der Ansatz aus Teilaufgabe d) ist im vorliegenden Fall besser als der Ansatz aus Aufgabe S2.2 geeignet, um das zufälliger Rauschen aus den Messwerten zu entfernen. Dies liegt daran, dass der Datensatz Sprünge aufweist, die kaum über das natürliche Rauschen zu erklären sind. Der Ansatz aus Teilaufgabe d) ist dabei besser geeignet als der Ansatz aus S2.2, da er die Sprungstellen in den Daten verbleiben lässt, wohingegen der Ansatz aus S2.2 zu einer quasi-glatten Funktion führt. Die unterschiedlichen Ergebnisse sind ein Resultat der verschiedenen Normen der Regularisierungs-Terme. Die quadrierte Euklidische Norm aus S2.2 bestraft große Sprünge besonders stark (quadratisch) und versucht daher sie tendenziell \glqq zu vermeiden\grqq, wohin gegen die 1-Norm aus Teilaufgabe d) nur die absolute Sprunghöhe bestraft und die Sprünge daher tendenziell zunächst \glqq beibehält\grqq (merke, dass sich bei beiden Normen mit steigendem $\alpha$ die Ergebnisse einer horizontalen Geraden um den Mittelwert annähern). Dies entspricht auch den Ergebnissen aus Aufgabe S1.2d, bei der ebenfalls die unterschiedlichen Auswirkungen von Ausreißern (hier analog zu den Sprungstellen) auf die 1-Norm und die quadrierte euklidische Norm gezeigt worden sind. Auch dort hat die quadrierte euklidische Norm deutlich stärker auf Ausreißer reagiert und die 1-Norm sich robuster verhalten.
 \par
 \end{document}
