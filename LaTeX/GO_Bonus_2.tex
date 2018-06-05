@@ -260,18 +260,51 @@ Da $\inf_z h(x)$ für $\| \mu \|_{\infty} > \alpha $ (entspricht $\exists i \in 
 \end{equation*}
 
 \par
-(d) Sei $\bar{\mu}$ ein globaler Minimalpunkt von $LP$. Es gilt 
+(d) Sei $\bar{\mu}$ ein globaler Maximalpunkt von $LD$, dann folgt aus Übung 1.1.4 im Buch, dass $\bar{\mu}$ auch ein globaler Minimalpunkt von
 \begin{equation*}
-	\nabla_x L(x, z, \bar{\mu}) = 2(x-y)+ L^T\bar{\mu}
+	LD^-: \min_{\mu \in \mathbb{R}^{n-1}} \frac{1}{4}\mu^TLL^T\mu - \mu^TLy, \quad \text{s.t.} \quad \|\mu \|_{\infty}\leq \alpha 
 \end{equation*}
-und
+mit $f^-(\mu) \coloneqq \frac{1}{4}\mu^TLL^T\mu - \mu^TLy$ ist. Es gilt
 \begin{equation*}
 	\begin{split}
-		2( \bar{x} - y) + L^T\bar{\mu} &\stackrel{!}{=} 0 \\
-		\Leftrightarrow \bar{x} &= y - \frac{1}{2}L^T\bar{\mu}.
+		\nabla f^-(\mu) &= \frac{1}{2} LL^T\mu - Ly, \\
+		D^2f^-(\mu) &= \frac{1}{2} L^TL \succeq 0,
 	\end{split}
 \end{equation*}
-Damit folgt, dass der Punkt $(\bar{x}, \bar{z}, \bar{\mu})$ mit passend gewähltem $\bar{z}$ nach Definition 2.7.5 der Maximalpunkt des Wolfe-Duals ist. Er ist wegen $\nabla _x L(\bar{x},\bar{z}, \bar{\mu}) = 0$, $\bar{\mu}$ gegeben aus der Aufgabenstellung und $\bar{z}$ passend gewählt insbesondere dual zulässig. Da der Punkt $\bar{x}$ weiterhin für passendes $\bar{z}$ primal zulässig ist folgt mit 2.7.12 das $\bar{x}$ ein Optimalpunkt für $CRL_1$ und damit auch für $RL_1$ ist.
+und damit, dass $f^-$ nach Satz 2.5.3 konvex ist. Mit Hilfe von Korollar 2.4.6 folgt weiter, dass $\bar{\mu}$ auch ein kritischer Punkt von $f^-$ ist. Es ergibt sich
+\begin{equation}
+\label{eq:22d}
+	\begin{split}
+			\frac{1}{2}LL^T \bar{\mu} - Ly&=0 \\
+			\Leftrightarrow LL^T \bar{\mu} &= 2Ly \\
+			\Leftrightarrow \bar{\mu}^T LL^T \bar{\mu} &= 2\bar{\mu}^TLy.
+	\end{split}
+\end{equation}
+Aufgrund der starken Dualität folgt weiter, dass der Maximalwert $\nu_{LD}$ von $LD$ gleich dem Minimalwert $\nu_{CRL_1}$ von $CRL_1$ ist und damit auch $\nu_{LD}=\nu_{RL_1}$ wobei $\nu_{RL_1}$ der Minimalwert von $RL_1$ ist (merke, dass die Umformung von $RL_1$ zu $CRL_1$ nicht nur zu gleichen Minimalpunkten sondern auch zu gleichen Minimalwerten führt). Setzen wir nun $\bar{x}$ in die Zielfunktion von $RL_1$ ein, dann folgt
+\begin{equation*}
+	\begin{split}
+		\|\bar{x} - y\|_2^2 + \alpha \| L\bar{x}\|_1 &= \frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} + \alpha \|Ly - \frac{1}{2}LL^T\bar{\mu} \|_1 \\
+		&=  \frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} + \alpha \|Ly - \frac{1}{2}2Ly \|_1 \\
+		&= \frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} \\
+		&= -\frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} + \frac{1}{2}\bar{\mu}^TLL^T\bar{\mu}\\
+		&= -\frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} \frac{1}{2} 2\bar{\mu}^TLy\\
+		&= -\frac{1}{4}\bar{\mu}^TLL^T\bar{\mu} \bar{\mu}^TLy \\
+		&= \nu_{LD},
+	\end{split}
+\end{equation*}
+wobei die zweite Gleichung wegen der zweiten Zeile aus \eqref{eq:22d} gilt und die fünfte Gleichung wegen der dritten Zeile aus \eqref{eq:22d} gilt. Damit gilt $\|\bar{x} - y\|_2^2 + \alpha \| L\bar{x}\|_1 = \nu_{LD} = \nu_{RL_1}$ und damit (mit Definition 1.1.3), dass $\bar{x}$ ein globaler Minimalpunkt von $RL_1$ ist (merke, dass wir die Zulässigkeit von $\bar{x}$ für $RL_1$ nicht prüfen müssen, da die Zulässige Menge der $R^n$ ist).
+%Sei $\bar{\mu}$ ein globaler Minimalpunkt von $LP$. Es gilt 
+%\begin{equation*}
+%	\nabla_x L(x, z, \bar{\mu}) = 2(x-y)+ L^T\bar{\mu}
+%\end{equation*}
+%und
+%\begin{equation*}
+%	\begin{split}
+%		2( \bar{x} - y) + L^T\bar{\mu} &\stackrel{!}{=} 0 \\
+%		\Leftrightarrow \bar{x} &= y - \frac{1}{2}L^T\bar{\mu}.
+%	\end{split}
+%\end{equation*}
+%Damit folgt, dass der Punkt $(\bar{x}, \bar{z}, \bar{\mu})$ mit passend gewähltem $\bar{z}$ nach Definition 2.7.5 der Maximalpunkt des Wolfe-Duals ist. Er ist wegen $\nabla _x L(\bar{x},\bar{z}, \bar{\mu}) = 0$, $\bar{\mu}$ gegeben aus der Aufgabenstellung und $\bar{z}$ passend gewählt insbesondere dual zulässig. Da der Punkt $\bar{x}$ weiterhin für passendes $\bar{z}$ primal zulässig ist folgt mit 2.7.12 das $\bar{x}$ ein Optimalpunkt für $CRL_1$ und damit auch für $RL_1$ ist.
 %Gemäß Aufgabenstellung gilt: $\bar x$ ist primal zulässig für $Lx=z$. Außerdem gilt aufgrund $\nabla_x L(x,z,\mu)=2x-2y+\mu L$, dass $(\bar\mu,\bar x)$ dual zulässig ist, so man zu beliebigem $\bar \mu\in \mathbb R^{n-1}$ den Punkt $\bar x=\frac{2y-\mu L}{2}$ wählt. Damit gleichzeitig Bedingung $a$ $\&$ $b$ aus Lemma 2.7.10. gelten, müssen $\bar x$ und  $\bar \mu$ also folgendes Gleichungssystem erfüllen:
 %\begin{equation*}
  % \begin{split}
